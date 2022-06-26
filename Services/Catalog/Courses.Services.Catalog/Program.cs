@@ -1,16 +1,17 @@
-﻿using Courses.Services.Catalog.Settings;
+﻿using Courses.Services.Catalog.Services.Categories;
+using Courses.Services.Catalog.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
 // Add services to the container.
-
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //typeof Program.cs dosyası diye belirttik bağlı bulunduğu project içindeki tüm automapper ları tarayacaktır.
-builder.Services.AddAutoMapper(typeof(Program));
 
 var dbs = builder.Configuration.GetSection("DatabaseSettings").Get<DatabaseSettings>();
 
