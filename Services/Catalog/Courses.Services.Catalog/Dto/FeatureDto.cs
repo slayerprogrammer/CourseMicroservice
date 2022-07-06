@@ -1,6 +1,6 @@
 ﻿namespace Courses.Services.Catalog.Dto
 {
-    internal class FeatureDto
+    public class FeatureDto
     {
         public int Duration { get; set; }
     }

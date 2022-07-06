@@ -1,4 +1,5 @@
 ﻿using Courses.Services.Catalog.Services.Categories;
+using Courses.Services.Catalog.Services.Courses;
 using Courses.Services.Catalog.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
+builder.Services.AddScoped(typeof(ICourseService), typeof(CourseService));
 
 var dbs = builder.Configuration.GetSection("DatabaseSettings").Get<DatabaseSettings>();
 builder.Services.AddSingleton<IDatabaseSettings, DatabaseSettings>(sp => { return dbs; });
