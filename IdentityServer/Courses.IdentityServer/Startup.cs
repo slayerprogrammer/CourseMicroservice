@@ -3,6 +3,7 @@
 
 using Courses.IdentityServer.Data;
 using Courses.IdentityServer.Models;
+using Courses.IdentityServer.Services;
 using IdentityServer4;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -53,6 +54,10 @@ namespace Courses.IdentityServer
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>();
+
+            //Eğer Resource Owner Credential Grent Tipinden bir istek yapıldığında
+            //Token almak için ilgili class önce validator a gidecek. !
+            builder.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();

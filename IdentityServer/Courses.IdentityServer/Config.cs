@@ -3,6 +3,7 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Courses.IdentityServer
@@ -19,8 +20,13 @@ namespace Courses.IdentityServer
         public static IEnumerable<IdentityResource> IdentityResources =>
                    new IdentityResource[]
                    {
-                //new IdentityResources.OpenId(),
-                //new IdentityResources.Profile(),
+                       new IdentityResources.Email(),
+                       //id bilgisi, subkeyword dolu olması gerekiyor. OpenId mutlak olmalı.
+                       //OpenId Connect Protokolünün zorunlu kıldığı bir alan
+                       new IdentityResources.OpenId(),
+                       //Profil bilgileri adres bilgileri vs.
+                       new IdentityResources.Profile(),
+                       new IdentityResource(){ Name= "roles", DisplayName = "Roles", Description = "Kullanıcı Rolleri", UserClaims = new []{ "role"} }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -40,6 +46,34 @@ namespace Courses.IdentityServer
                     ClientSecrets = {new Secret("secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     AllowedScopes = { "catalog_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+                },
+
+                new Client
+                {
+                    ClientName = "Asp.Net Core MVC",
+                    ClientId = "WebMvcClientForUser",
+                    AllowOfflineAccess = true, //refresh token izin veriyoruz.
+                    ClientSecrets = {new Secret("secret".Sha256())},
+                    //dipnot=> ResourceOwnerPasswordAndClientCredentials refresh token yoktur.
+                    //Bu nedenle ResourceOwnerPassword kullanıyoruz.
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes = { IdentityServerConstants.StandardScopes.Email,
+                                      IdentityServerConstants.StandardScopes.OpenId,
+                                      IdentityServerConstants.StandardScopes.Profile,
+                                      IdentityServerConstants.StandardScopes.OfflineAccess, // refresh token için
+                                      "roles"},
+                    //1 Saat olarak tanımlıyoruz.
+                    AccessTokenLifetime = 1*60*60, //default 1 saat biz bunu sn cinsinden belirtiyoruz.
+                    //Tarih belirtiyoruz. Kesin bir tarih veriyoruz.
+                    RefreshTokenExpiration = TokenExpiration.Absolute, //tarih mi belirticez yoksa yenileyecek mi durumunu belirtiyoruz.
+                    AbsoluteRefreshTokenLifetime =(int)(DateTime.Now.AddDays(60)-DateTime.Now).TotalSeconds, // token ömrünü belirtiyoruz.
+                    //tekrar kullanılabilir diyoruz.
+                    RefreshTokenUsage = TokenUsage.ReUse //refresh token tekrar kullanılıp kullanılmayacağını belirtiyorum.
+
+                    //dipnot Token süresini kısa tutmak her zaman iyidir.
+                    //Access Token süresi örneğin 1 saat ver Refresh token süresini 20 gün ver.
+                    //Sistemde Access Token süren dolsa bile 401 aldığında refresh token üzerinden IdentityServerdan yeni bir token al
+                    //kullanıcıya hissettirmeden devam ettir.
                 }
             };
     }
