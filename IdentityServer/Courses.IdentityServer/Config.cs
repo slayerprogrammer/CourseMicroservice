@@ -60,6 +60,7 @@ namespace Courses.IdentityServer
                     AllowedScopes = { IdentityServerConstants.StandardScopes.Email,
                                       IdentityServerConstants.StandardScopes.OpenId,
                                       IdentityServerConstants.StandardScopes.Profile,
+                                      IdentityServerConstants.LocalApi.ScopeName,
                                       IdentityServerConstants.StandardScopes.OfflineAccess, // refresh token için
                                       "roles"},
                     //1 Saat olarak tanımlıyoruz.
