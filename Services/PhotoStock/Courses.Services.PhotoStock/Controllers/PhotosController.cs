@@ -36,6 +36,7 @@ namespace Courses.Services.PhotoStock.Controllers
             return CreateActionResultInstance(Response<PhotoDto>.Fail("Photo bulunamadı", 400));
         }
 
+        [HttpGet]
         public IActionResult PhotoDelete(string photoUrl)
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", photoUrl);
