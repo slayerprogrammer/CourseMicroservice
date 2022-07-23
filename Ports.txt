@@ -1,2 +1,6 @@
 Services
-- Catalog => http://localhost:5011
+	- Catalog => http://localhost:5011
+	- PhotoStock => http://localhost:5012
+	- Basket => http://localhost:5013
+	- Discount => http://localhost:5014
+IdentityServer => http://localhost:5001
