@@ -3,4 +3,5 @@ Services
 	- PhotoStock => http://localhost:5012
 	- Basket => http://localhost:5013
 	- Discount => http://localhost:5014
+	- Order => http://localhost:5015
 IdentityServer => http://localhost:5001
