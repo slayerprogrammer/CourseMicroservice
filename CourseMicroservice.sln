@@ -52,7 +52,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.FakePaymen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{A66CA4A3-F07D-473D-B204-1D12356F02D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Courses.Gateway", "Courses.Gateway\Courses.Gateway.csproj", "{AE59DD1E-AB35-41EC-93B5-7379DD506F28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Gateway", "Courses.Gateway\Courses.Gateway.csproj", "{AE59DD1E-AB35-41EC-93B5-7379DD506F28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{F2512A94-C046-46A2-BBB6-2F78549D2B30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Courses.Web", "Frontends\Courses.Web\Courses.Web.csproj", "{A62087EE-94D5-4B4B-A792-75A3600022A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -112,6 +116,10 @@ Global
 		{AE59DD1E-AB35-41EC-93B5-7379DD506F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE59DD1E-AB35-41EC-93B5-7379DD506F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE59DD1E-AB35-41EC-93B5-7379DD506F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62087EE-94D5-4B4B-A792-75A3600022A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62087EE-94D5-4B4B-A792-75A3600022A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62087EE-94D5-4B4B-A792-75A3600022A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62087EE-94D5-4B4B-A792-75A3600022A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +144,7 @@ Global
 		{C1065474-4783-4760-A4B1-708BC7C84444} = {EB40785E-EE7A-4CA6-8F03-97C45B14EA0E}
 		{4BB4812B-AFC6-4B9B-9EBC-B3099C9CD286} = {C1065474-4783-4760-A4B1-708BC7C84444}
 		{AE59DD1E-AB35-41EC-93B5-7379DD506F28} = {A66CA4A3-F07D-473D-B204-1D12356F02D3}
+		{A62087EE-94D5-4B4B-A792-75A3600022A9} = {F2512A94-C046-46A2-BBB6-2F78549D2B30}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7636AF34-D2EF-4415-B670-4349D02CF8DD}
